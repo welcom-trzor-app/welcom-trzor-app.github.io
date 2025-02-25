@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 280 100% 50%;
+    --secondary: 200 100% 50%;
+    --accent: 320 100% 50%;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-purple-900 via-blue-900 to-black min-h-screen text-white;
+    background-attachment: fixed;
+  }
+}
+
+.neon-border {
+  box-shadow: 0 0 10px theme('colors.purple.500'),
+              0 0 20px theme('colors.blue.500'),
+              0 0 30px theme('colors.purple.500');
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    45deg,
+    hsl(var(--primary)),
+    hsl(var(--secondary)),
+    hsl(var(--accent))
+  );
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.feature-card {
+  @apply bg-black/30 backdrop-blur-lg rounded-xl p-6 border border-white/10 hover:border-purple-500/50 transition-all duration-300;
+}
+
+.fancy-bullet {
+  @apply relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-purple-500 before:rounded-full before:shadow-[0_0_10px_theme(colors.purple.500)];
+}
